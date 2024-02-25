@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        function redirectToQuestion() {
+            window.location.href = "{% url 'poc:data-entry' %}"; 
+        }
+
+        function exportData() {
+            window.location.href = "{% url 'poc:generate-pdf' %}"; 
+        }
+        </script>
+<body>
+  <h1>Questions</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Option 1</th>
+        <th>Option 2</th>
+        <th>Option 3</th>
+        <th>Option 4</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for item in data_list %}
+      <tr>
+        <td>{{ item.question }}</td>
+        <td>{{ item.option1 }}</td>
+        <td>{{ item.option2 }}</td>
+        <td>{{ item.option3 }}</td>
+        <td>{{ item.option4 }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+<div>
+
+</div>
+<div>
+    <button id="add-question-button" onclick="redirectToQuestion()">Back</button>
+    <button id="export-data" onclick="exportData()">Export</button>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        function redirectToPreview() {
+            window.location.href = "{% url 'poc:data-list' %}"; 
+        }
+    </script>
+<body>
+    <form method="POST">
+        {% csrf_token %} 
+        <!-- {{ form.dropdown_field }}  -->
+        <!-- <div id="form-content" style="display: none;">  -->
+        <div id="form-content" style="display: block;"> 
+        {{ form.as_p }} 
+        <button type="submit">Submit</button>
+        </div>
+    </form>
+    <button id="preview-button" onclick="redirectToPreview()">Preview</button>
+</body>
+<!-- <script>
+    const dropdown = document.getElementById('id_dropdown_field'); 
+    const formContent = document.getElementById('form-content');
+
+    function showFormIfChanged() { 
+        if (dropdown.value !== 'default') { 
+            formContent.style.display = 'block'; 
+            } else {
+                formContent.style.display = 'none';
+                }
+    }
+
+    dropdown.addEventListener('change', showFormIfChanged); 
+    showFormIfChanged();      
+</script> -->
+</html>
